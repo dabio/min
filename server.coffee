@@ -21,5 +21,5 @@ server = connect.createServer(
     connect.conditionalGet(),
     connect.gzip(),
     connect.staticProvider("#{__dirname}/public")
-).listen 9393
+).listen 80
 

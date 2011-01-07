@@ -24,5 +24,5 @@
       });
     });
   };
-  server = connect.createServer(connect.router(minimize), connect.conditionalGet(), connect.gzip(), connect.staticProvider("" + __dirname + "/public")).listen(9393);
+  server = connect.createServer(connect.router(minimize), connect.conditionalGet(), connect.gzip(), connect.staticProvider("" + __dirname + "/public")).listen(80);
 }).call(this);
