@@ -12,16 +12,23 @@
       });
       return req.on('end', function() {
         var ast;
-        ast = jsp.parse(data);
-        ast = pro.ast_mangle(ast);
-        ast = pro.ast_squeeze(ast);
-        ast = pro.gen_code(ast);
-        res.writeHead(200, {
-          'Content-Type': 'text/plain'
-        });
-        return res.end(ast);
+        try {
+          ast = jsp.parse(data);
+          ast = pro.ast_mangle(ast);
+          ast = pro.ast_squeeze(ast);
+          ast = pro.gen_code(ast);
+          res.writeHead(200, {
+            'Content-Type': 'text/plain'
+          });
+          return res.end(ast);
+        } catch (error) {
+          res.writeHead(404, {
+            'Content-Type': 'text/plain'
+          });
+          return res.end("404 Not Found\n");
+        }
       });
     });
   };
-  server = connect.createServer(connect.router(minimize), connect.conditionalGet(), connect.gzip(), connect.staticProvider("" + __dirname + "/public")).listen(80);
+  server = connect.createServer(connect.router(minimize), connect.conditionalGet(), connect.gzip(), connect.staticProvider("" + __dirname + "/public")).listen(9393);
 }).call(this);
