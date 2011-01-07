@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Compress Your Javascript</title>
+    <style>
+    body {
+        background: #fff;
+        color: #4a3f2d;
+        font: 13px/1.53846 "Lucida Grande", "Lucida Sans Unicode", arial, sans-serif;
+        overflow-y: scroll;
+    }
+    #container {
+        margin: 50px auto;
+        width: 600px;
+    }
+    h1 {
+        color: #333;
+        font-size: 22px;
+    }
+    textarea {
+        width: 100%;
+        height: 20em;
+    }
+    #footer {
+        font-size: 11px
+    }
+    </style>
+</head>
+<body>
+<div id="container">
+    <h1>Compress Your Javascript</h1>
+    <p>Paste your code and submit</p>
+    <form action="/post" method="post">
+        <textarea width="100%" name="js" id="js"></textarea>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="result" style="display: none">
+        <p>0/0</p>
+        <textarea></textarea>
+    </div>
+    <p id="footer">by <a href="http://dab.io">dab.io</a></p>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script src="/min.js"></script>
+</body>
+</html>
