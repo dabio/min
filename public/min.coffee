@@ -1,9 +1,11 @@
 before_chars = $('form .chars')
 result = $('#result')
+error = $('#error')
 
 $("form").submit( ->
     before = $('#js').val()
     $.post('/post', before, (data, state, obj) ->
+        error.hide()
         result.show().children('.chars').text(data.length)
         result.children('textarea').val(data).focus().select()
         percent = 100-Math.round(data.length*100/before.length)
@@ -14,7 +16,7 @@ $("form").submit( ->
     return false
 )
 
-$("#error").ajaxError(->
+error.ajaxError(->
     result.hide()
     $(this).show().text('Failed to process your code. Please check if your code
     is valid javascript.')

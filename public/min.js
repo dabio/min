@@ -1,12 +1,14 @@
 (function() {
-  var before_chars, result, _gaq;
+  var before_chars, error, result, _gaq;
   before_chars = $('form .chars');
   result = $('#result');
+  error = $('#error');
   $("form").submit(function() {
     var before;
     before = $('#js').val();
     $.post('/post', before, function(data, state, obj) {
       var percent, saved;
+      error.hide();
       result.show().children('.chars').text(data.length);
       result.children('textarea').val(data).focus().select();
       percent = 100 - Math.round(data.length * 100 / before.length);
@@ -16,7 +18,7 @@
     });
     return false;
   });
-  $("#error").ajaxError(function() {
+  error.ajaxError(function() {
     result.hide();
     return $(this).show().text('Failed to process your code. Please check if your code\
     is valid javascript.');
