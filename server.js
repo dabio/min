@@ -1,9 +1,8 @@
 (function() {
-  var connect, jsp, minimize, pro, server, uglify;
-  connect = require('connect');
-  uglify = require('uglify-js');
-  jsp = uglify.parser;
-  pro = uglify.uglify;
+  var connect, jsp, minimize, pro, server;
+  connect = require("" + __dirname + "/vendor/connect/lib/connect");
+  jsp = require("" + __dirname + "/vendor/uglify-js/lib/parse-js");
+  pro = require("" + __dirname + "/vendor/uglify-js/lib/process");
   minimize = function(app) {
     return app.post('/post', function(req, res, next) {
       var data;
@@ -24,5 +23,5 @@
       });
     });
   };
-  server = connect.createServer(connect.router(minimize), connect.conditionalGet(), connect.gzip(), connect.staticProvider("" + __dirname + "/public")).listen(80);
+  server = connect.createServer(connect.router(minimize), connect.conditionalGet(), connect.gzip(), connect.staticProvider("" + __dirname + "/public")).listen(9393);
 }).call(this);

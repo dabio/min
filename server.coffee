@@ -1,7 +1,6 @@
-connect = require 'connect'
-uglify = require 'uglify-js'
-jsp = uglify.parser
-pro = uglify.uglify
+connect = require "#{__dirname}/vendor/connect/lib/connect"
+jsp = require "#{__dirname}/vendor/uglify-js/lib/parse-js"
+pro = require "#{__dirname}/vendor/uglify-js/lib/process"
 
 minimize = (app) ->
     app.post '/post', (req, res, next) ->
@@ -21,5 +20,5 @@ server = connect.createServer(
     connect.conditionalGet(),
     connect.gzip(),
     connect.staticProvider("#{__dirname}/public")
-).listen 80
+).listen 9393
 
