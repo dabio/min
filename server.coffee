@@ -24,5 +24,4 @@ server = connect.createServer(
     connect.conditionalGet(),
     connect.gzip(),
     connect.staticProvider("#{__dirname}/public")
-).listen 80
-
+).listen(process.env.PORT || 9393)
