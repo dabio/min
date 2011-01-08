@@ -1,6 +1,7 @@
 before_chars = $('form .chars')
 result = $('#result')
 error = $('#error')
+textarea_input = $("form textarea")
 
 $("form").submit( ->
     before = $('#js').val()
@@ -22,9 +23,10 @@ error.ajaxError(->
     is valid javascript.')
 )
 
-$("form textarea").keyup( ->
+textarea_input.keyup( ->
     before_chars.text(this.value.length)
 )
+textarea_input.focus()
 
 # Google Analytics
 _gaq = _gaq || []

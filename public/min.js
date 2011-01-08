@@ -1,8 +1,9 @@
 (function() {
-  var before_chars, error, ga, result, s, _gaq;
+  var before_chars, error, ga, result, s, textarea_input, _gaq;
   before_chars = $('form .chars');
   result = $('#result');
   error = $('#error');
+  textarea_input = $("form textarea");
   $("form").submit(function() {
     var before;
     before = $('#js').val();
@@ -23,9 +24,10 @@
     return $(this).show().text('Failed to process your code. Please check if your code\
     is valid javascript.');
   });
-  $("form textarea").keyup(function() {
+  textarea_input.keyup(function() {
     return before_chars.text(this.value.length);
   });
+  textarea_input.focus();
   _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-67221-12']);
   _gaq.push(['_trackPageview']);
