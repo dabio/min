@@ -5,9 +5,10 @@
   error = $('#error');
   textarea_input = $("form textarea");
   $("form").submit(function() {
-    var before;
-    before = $('#js').val();
-    $.post('/post', before, function(data, state, obj) {
+    var before, type;
+    before = $('#content').val();
+    type = 'js';
+    $.post("/post-" + type, before, function(data, state, obj) {
       var percent, saved;
       error.hide();
       result.show().children('.chars').text(data.length);

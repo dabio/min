@@ -4,8 +4,9 @@ error = $('#error')
 textarea_input = $("form textarea")
 
 $("form").submit( ->
-    before = $('#js').val()
-    $.post('/post', before, (data, state, obj) ->
+    before = $('#content').val()
+    type = 'js' # $('#type').val()
+    $.post("/post-#{type}", before, (data, state, obj) ->
         error.hide()
         result.show().children('.chars').text(data.length)
         result.children('textarea').val(data).focus().select()

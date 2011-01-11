@@ -4,3 +4,6 @@
 [submodule "vendor/uglify-js"]
 	path = vendor/uglify-js
 	url = git://github.com/mishoo/UglifyJS.git
+[submodule "vendor/cssmin"]
+	path = vendor/cssmin
+	url = git://github.com/jbleuzen/node-cssmin.git

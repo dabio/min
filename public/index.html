@@ -26,7 +26,13 @@
     <form action="/post" method="post">
         <p class="left">Paste your code and compress it.</p>
         <p class="chars right">0</p>
-        <textarea width="100%" name="js" id="js"></textarea>
+        <textarea width="100%" id="content"></textarea>
+        <!--
+        <select id="type">
+            <option>js</option>
+            <option>css</option>
+        </select>
+        -->
         <button type="submit">Compress</button>
     </form>
     <p id="error" style="display: none"></p>
