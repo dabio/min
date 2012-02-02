@@ -76,7 +76,7 @@ class App
   #
   post '/js', :provides => 'json' do
     headers \
-        'Access-Control-Allow-Origin' => request.referrer
+        'Access-Control-Allow-Origin' => '*' #request.referrer
     {'text' => Uglifier.compile(params[:text])}.to_json
   end
 
@@ -87,7 +87,7 @@ class App
   #
   options '/js' do
     headers \
-        'Access-Control-Allow-Origin' => request.referrer,
+        'Access-Control-Allow-Origin' => '*', #request.referrer,
         'Access-Control-Allow-Methods' => 'POST, OPTIONS',
         'Access-Control-Allow-Headers' => 'X-Requested-With'
   end
