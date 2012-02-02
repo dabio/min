@@ -75,10 +75,22 @@ class App
   # a compressed JSON format.
   #
   post '/js', :provides => 'json' do
-    puts params
-    {}.to_json
+    headers \
+        'Access-Control-Allow-Origin' => request.referrer
+    {'text' => Uglifier.compile(params[:text])}.to_json
   end
 
+
+  #
+  # OPTIONS /js
+  # This gives approval to the client that is can request the resource.
+  #
+  options '/js' do
+    headers \
+        'Access-Control-Allow-Origin' => request.referrer,
+        'Access-Control-Allow-Methods' => 'POST, OPTIONS',
+        'Access-Control-Allow-Headers' => 'X-Requested-With'
+  end
 
   # must use this for working on heroku cedar
   run! if app_file == $0
