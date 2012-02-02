@@ -8,29 +8,30 @@ If you don't want to use the API, head over to the [online user interface](http:
 
 All API access is over HTTP and accessed from the `api.jsmin.de` domain. All data is sent and received as JSON.
 
-	$ curl -i http://api.jsmin.de
+    $ curl -i http://api.jsmin.de
 
-	HTTP/1.1 200 OK
-	Content-Type: application/json
-	Status: 200 OK
-	Content-Length: 2
+    HTTP/1.1 200 OK
+    X-Frame-Options: sameorigin
+    X-XSS-Protection: 1; mode=block
+    Content-Type: application/json;charset=utf-8
+    Content-Length: 2
 
-	{}
+    {}
 
 Pass your javascript you want to compress to `/js` and get the minimized result as a response.
 
 ###### Request
 
-	POST /js
+    POST /js
 
-	{
-		"text": "new Array(1, 2, 3, 4);"
-	}
+    {
+        "text": "new Array(1, 2, 3, 4);"
+    }
 
 ###### Response
 
-	{
-		"test": "[1,2,3,4]"
-	}
+    {
+        "test": "[1,2,3,4]"
+    }
 
 You could calculate the compression rate based upon your input if you like.
