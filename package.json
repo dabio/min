@@ -1,0 +1,16 @@
+{
+  "name": "min",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "latest",
+    "jade": "latest"
+  },
+  "subdomain": "min",
+  "engines": {
+    "node": "0.8.x"
+  }
+}
