@@ -39,5 +39,6 @@ textarea {
     text-align:right;
 }
 footer {
-    font-size:11px
+    font-size:11px;
+    margin-top: 20px;
 }
