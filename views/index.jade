@@ -4,10 +4,10 @@ block content
   section#container
     h1 Compress Your Javascript
 
-    form(method='post')
+    form(method='post', action='/')
       p.left Paste your code and compress it.
       p.chars.right 0
-      textarea#content
+      textarea#content(name='content')
       button(type='submit') Compress
 
     footer by 
