@@ -1,14 +1,18 @@
 extends layout
 
 block content
-  section#container
-    h1 Compress Your Javascript
+  h1 Compress Your Javascript
 
-    form(method='post', action='/')
-      p.left Paste your code and compress it.
+  form(method='post', action='/')
+    p.left Paste your code and compress it.
+    p.chars.right 0
+    textarea#input(name='content')
+      if (typeof input !== "undefined")
+        = input
+    button(type='submit') Compress
+
+  if (typeof output !== "undefined")
+    section#result
+      p.stats.left Saved 0%
       p.chars.right 0
-      textarea#content(name='content')
-      button(type='submit') Compress
-
-    footer by 
-      a(href='http://dab.io') dab.io
+      textarea#output= output

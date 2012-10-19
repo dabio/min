@@ -1,7 +1,39 @@
 doctype 5
 html
   head
-    title= title
+    title Compress Your Javascript
     link(rel='stylesheet', href='/css.css')
+
   body
-    block content
+    section#container
+      block content
+
+      footer by 
+        a(href='http://dab.io') dab.io
+
+    //- statistics and user interface handling
+    script
+      var input = document.getElementById('input')
+        , output = document.getElementById('output');
+
+      if (output) {
+        output.focus();
+        output.select();
+      } else {
+        input.focus();
+      }
+
+
+    //- gaug.es tracking
+    script
+      var _gauges = _gauges || [];
+      (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id', '5081b8f7f5a1f57ab2000047');
+        t.src = '//secure.gaug.es/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
