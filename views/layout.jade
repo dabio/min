@@ -13,12 +13,23 @@ html
 
     //- statistics and user interface handling
     script
-      var input = document.getElementById('input')
-        , output = document.getElementById('output');
+      var d = document
+        , input = d.getElementById('input')
+        , output = d.getElementById('output')
+        , chars = d.getElementsByClassName('chars');
+
+      input.onkeyup = function() {
+        chars[0].innerHTML = input.value.length;
+      };
+      chars[0].innerHTML = input.value.length;
 
       if (output) {
         output.focus();
         output.select();
+        output.onkeyup = function() {
+          chars[1].innerHTML = output.value.length;
+        };
+        chars[1].innerHTML = output.value.length;
       } else {
         input.focus();
       }
