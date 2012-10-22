@@ -1,4 +1,4 @@
-# [jsmin.de](jsmin.de)
+# [jsmin.de](http://jsmin.de/)
 
 A javascript compressor app.
 
