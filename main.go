@@ -33,10 +33,22 @@ func index(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", http.StatusMovedPermanently)
 		return
 	}
+	if !(r.Method == "GET" || r.Method == "HEAD") {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	w.Header().Set("Content-Type", "text/html; charset=utf=8")
 }
 
 func track(fn http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		defer func(start time.Time, r *http.Request) {
+			if os.Getenv("ENV") != "production" {
+				log.Printf("%s %s %s", r.Method, r.URL, time.Since(start))
+			}
+		}(time.Now(), r)
+
 		fn(w, r)
 	}
 }

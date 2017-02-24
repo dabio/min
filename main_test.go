@@ -13,7 +13,12 @@ func TestIndex(t *testing.T) {
 		want   int
 	}{
 		{"GET", "/", 200},
-		{"POST", "/", 200},
+		{"HEAD", "/", 200},
+
+		{"POST", "/", 405},
+		{"PATCH", "/", 405},
+		{"PUT", "/", 405},
+
 		{"GET", "/blah", http.StatusMovedPermanently},
 		{"POST", "/sth", http.StatusMovedPermanently},
 	}
