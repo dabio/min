@@ -1,0 +1,37 @@
+{
+	"version": 0,
+	"dependencies": [
+		{
+			"importpath": "github.com/tdewolff/buffer",
+			"repository": "https://github.com/tdewolff/buffer",
+			"vcs": "git",
+			"revision": "df6253e2a2cda5aba1b5d0c59fc5bdf0a98ae192",
+			"branch": "master",
+			"notests": true
+		},
+		{
+			"importpath": "github.com/tdewolff/minify",
+			"repository": "https://github.com/tdewolff/minify",
+			"vcs": "git",
+			"revision": "c764d19c8021740f5fbfd18f059a0984416bff6d",
+			"branch": "master",
+			"notests": true
+		},
+		{
+			"importpath": "github.com/tdewolff/parse",
+			"repository": "https://github.com/tdewolff/parse",
+			"vcs": "git",
+			"revision": "8811e74dc37ac97c34711209e3a138abeb489c3b",
+			"branch": "master",
+			"notests": true
+		},
+		{
+			"importpath": "github.com/tdewolff/strconv",
+			"repository": "https://github.com/tdewolff/strconv",
+			"vcs": "git",
+			"revision": "3e8091f4417ebaaa3910da63a45ea394ebbfb0e3",
+			"branch": "master",
+			"notests": true
+		}
+	]
+}

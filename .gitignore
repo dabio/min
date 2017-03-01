@@ -1,1 +1,12 @@
-node_modules/
+min
+vendor/github.com/tdewolff/minify/cmd
+vendor/github.com/tdewolff/minify/css
+vendor/github.com/tdewolff/minify/html
+vendor/github.com/tdewolff/minify/json
+vendor/github.com/tdewolff/minify/svg
+vendor/github.com/tdewolff/minify/xml
+vendor/github.com/tdewolff/parse/css
+vendor/github.com/tdewolff/parse/html
+vendor/github.com/tdewolff/parse/json
+vendor/github.com/tdewolff/parse/svg
+vendor/github.com/tdewolff/parse/xml
