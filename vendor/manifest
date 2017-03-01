@@ -2,46 +2,6 @@
 	"version": 0,
 	"dependencies": [
 		{
-			"importpath": "github.com/dustin/go-humanize",
-			"repository": "https://github.com/dustin/go-humanize",
-			"vcs": "git",
-			"revision": "7a41df006ff9af79a29f0ffa9c5f21fbe6314a2d",
-			"branch": "master",
-			"notests": true
-		},
-		{
-			"importpath": "github.com/equinox-io/equinox",
-			"repository": "https://github.com/equinox-io/equinox",
-			"vcs": "git",
-			"revision": "6f97d0d3970881d3e53dd6f547a41109eb055e54",
-			"branch": "master",
-			"notests": true
-		},
-		{
-			"importpath": "github.com/fsnotify/fsnotify",
-			"repository": "https://github.com/fsnotify/fsnotify",
-			"vcs": "git",
-			"revision": "a904159b9206978bb6d53fcc7a769e5cd726c737",
-			"branch": "master",
-			"notests": true
-		},
-		{
-			"importpath": "github.com/matryer/try",
-			"repository": "https://github.com/matryer/try",
-			"vcs": "git",
-			"revision": "9ac251b645a2628ef89dbd2986987cc1299408ff",
-			"branch": "master",
-			"notests": true
-		},
-		{
-			"importpath": "github.com/spf13/pflag",
-			"repository": "https://github.com/spf13/pflag",
-			"vcs": "git",
-			"revision": "9ff6c6923cfffbcd502984b8e0c80539a94968b7",
-			"branch": "master",
-			"notests": true
-		},
-		{
 			"importpath": "github.com/tdewolff/buffer",
 			"repository": "https://github.com/tdewolff/buffer",
 			"vcs": "git",
@@ -71,15 +31,6 @@
 			"vcs": "git",
 			"revision": "3e8091f4417ebaaa3910da63a45ea394ebbfb0e3",
 			"branch": "master",
-			"notests": true
-		},
-		{
-			"importpath": "golang.org/x/sys/unix",
-			"repository": "https://go.googlesource.com/sys",
-			"vcs": "git",
-			"revision": "e4594059fe4cde2daf423055a596c2cd1e6c9adf",
-			"branch": "master",
-			"path": "/unix",
 			"notests": true
 		}
 	]
