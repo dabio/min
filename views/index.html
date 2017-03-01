@@ -10,14 +10,16 @@
 		<form method="post" action="/">
 			<p class="left">Paste your code and compress it.</p>
 			<p class="chars right">0</p>
-			<textarea id="input" name="content"></textarea>
+      <textarea id="input" name="content">{{ .Input }}</textarea>
 			<button type="submit">Compress</button>
 		</form>
-		<section id="result">
-			<p id="stats" class="left">Saved 0%</p>
-			<p class="chars right">0</p>
-			<textarea id="output"></textarea>
-		</section>
+    {{ if .Output }}
+      <section id="result">
+        <p id="stats" class="left">Saved 0%</p>
+        <p class="chars right">0</p>
+        <textarea id="output">{{ .Output }}</textarea>
+      </section>
+    {{ end }}
 		<footer>by <a href="http://dab.io">dab.io</a></footer>
 	</section>
 	<script>
@@ -26,7 +28,7 @@
 			, output = $('output')
 			, chars = document.getElementsByClassName('chars')
 			, stats = $('stats');
-			
+
 		input.onkeyup = function() {
 			chars[0].innerHTML = input.value.length;
 		};
@@ -39,12 +41,12 @@
 				chars[1].innerHTML = output.value.length;
 			};
 			chars[1].innerHTML = output.value.length;
-			
+
 			var percent = 100 - Math.round(output.value.length * 100 / input.value.length)
 				, saved = percent > 100 ? 'bloated' : 'saved';
-				
+
 			stats.innerHTML = percent + ' % ' + saved;
-			
+
 		} else {
 			input.focus();
 		}

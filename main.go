@@ -7,6 +7,9 @@ import (
 	"os"
 	"runtime"
 	"time"
+
+	"github.com/tdewolff/minify"
+	"github.com/tdewolff/minify/js"
 )
 
 type context struct {
@@ -27,7 +30,12 @@ func (c *context) index(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var data interface{}
+	type dataType struct {
+		Input  string
+		Output string
+	}
+	var data dataType
+	const mediatype = "text/javascript"
 
 	switch r.Method {
 	default:
@@ -35,7 +43,16 @@ func (c *context) index(w http.ResponseWriter, r *http.Request) {
 		return
 	case "GET":
 	case "POST":
+		m := minify.New()
+		m.AddFunc(mediatype, js.Minify)
 
+		s, err := m.String(mediatype, r.FormValue("content"))
+		if err != nil {
+			log.Panic(err)
+		}
+
+		data.Input = r.FormValue("content")
+		data.Output = s
 	}
 
 	w.Header().Set("Content-Type", "text/html; charset=utf=8")
