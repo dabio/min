@@ -1,0 +1,10 @@
+applications:
+  - path: .
+    memory: 128M
+    instances: 1
+    domain: pinub.mybluemix.net
+    name: min
+    host: min
+    disk_quota: 1024M
+    command: min
+    buildpack: https://github.com/cloudfoundry/go-buildpack.git
