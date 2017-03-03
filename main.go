@@ -26,6 +26,10 @@ func (c *context) index(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", http.StatusMovedPermanently)
 		return
 	}
+
+	w.Header().Set("Connection", "keep-alive")
+	w.Header().Set("Content-Type", "text/html; charset=utf=8")
+
 	if r.Method == "HEAD" {
 		return
 	}
@@ -55,7 +59,6 @@ func (c *context) index(w http.ResponseWriter, r *http.Request) {
 		data.Output = s
 	}
 
-	w.Header().Set("Content-Type", "text/html; charset=utf=8")
 	c.render(w, "index", data)
 }
 

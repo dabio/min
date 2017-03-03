@@ -1,10 +1,13 @@
 applications:
   - path: .
-    memory: 128M
+    memory: 64M
     instances: 1
-    domain: pinub.mybluemix.net
     name: min
-    host: min
-    disk_quota: 1024M
+    env:
+      GOPACKAGENAME: min
+      GOVERSION: go1.8
+    host: jsmin
+    disk_quota: 64M
     command: min
     buildpack: https://github.com/cloudfoundry/go-buildpack.git
+    health-check-type: process
