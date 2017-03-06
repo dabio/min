@@ -72,7 +72,6 @@ func main() {
 	}
 
 	m := http.NewServeMux()
-	m.Handle("/css/", http.FileServer(http.Dir("./static/")))
 	m.HandleFunc("/", track(c.index))
 
 	s := &http.Server{
