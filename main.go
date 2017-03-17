@@ -8,6 +8,7 @@ import (
 	"runtime"
 	"time"
 
+	"github.com/pinub/mux"
 	"github.com/tdewolff/minify"
 	"github.com/tdewolff/minify/js"
 )
@@ -17,46 +18,35 @@ type context struct {
 }
 
 func (c *context) render(w http.ResponseWriter, tmpl string, data interface{}) {
+	w.Header().Set("Connection", "keep-alive")
+	w.Header().Set("Content-Type", "text/html; charset=utf=8")
+
 	if err := c.templates.ExecuteTemplate(w, tmpl+".html", data); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
-func (c *context) index(w http.ResponseWriter, r *http.Request) {
-	if r.URL.String() != "/" {
-		http.Redirect(w, r, "/", http.StatusMovedPermanently)
-		return
-	}
 
-	w.Header().Set("Connection", "keep-alive")
-	w.Header().Set("Content-Type", "text/html; charset=utf=8")
+func (c *context) get(w http.ResponseWriter, r *http.Request) {
+	c.render(w, "index", nil)
+}
 
-	if r.Method == "HEAD" {
-		return
-	}
-
-	type dataType struct {
-		Input  string
-		Output string
-	}
-	var data dataType
+func (c *context) post(w http.ResponseWriter, r *http.Request) {
 	const mediatype = "text/javascript"
 
-	switch r.Method {
-	default:
-		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
-		return
-	case "GET":
-	case "POST":
-		m := minify.New()
-		m.AddFunc(mediatype, js.Minify)
+	m := minify.New()
+	m.AddFunc(mediatype, js.Minify)
 
-		s, err := m.String(mediatype, r.FormValue("content"))
-		if err != nil {
-			log.Panic(err)
-		}
+	s, err := m.String(mediatype, r.FormValue("content"))
+	if err != nil {
+		log.Panic(err)
+	}
 
-		data.Input = r.FormValue("content")
-		data.Output = s
+	data := struct {
+		Input  string
+		Output string
+	}{
+		r.FormValue("content"),
+		s,
 	}
 
 	c.render(w, "index", data)
@@ -71,8 +61,9 @@ func main() {
 		templates: template.Must(template.ParseGlob("./views/*.html")),
 	}
 
-	m := http.NewServeMux()
-	m.HandleFunc("/", track(c.index))
+	m := mux.New()
+	m.Get("/", track(c.get))
+	m.Post("/", track(c.post))
 
 	s := &http.Server{
 		Addr:           ":" + os.Getenv("PORT"),

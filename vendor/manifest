@@ -2,6 +2,14 @@
 	"version": 0,
 	"dependencies": [
 		{
+			"importpath": "github.com/pinub/mux",
+			"repository": "https://github.com/pinub/mux",
+			"vcs": "git",
+			"revision": "676a2b1c9288bfe569c099a3c7a1e86b3d79ea3e",
+			"branch": "master",
+			"notests": true
+		},
+		{
 			"importpath": "github.com/tdewolff/buffer",
 			"repository": "https://github.com/tdewolff/buffer",
 			"vcs": "git",
